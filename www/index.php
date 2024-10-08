@@ -8,7 +8,6 @@
         <div class="container-fluid">
             <?php
                 echo "<h1>¡Hola, Bienvenido al módulo de DWCS 2024-25!</h1>";
-                echo "<h2>Hola de nuevo. Este es un cambio de prueba.</h2>"
             ?> 
 
             <div class="table">
