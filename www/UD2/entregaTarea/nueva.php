@@ -29,6 +29,7 @@
                 $num= 0;
                 $camposFallidosMensaje= "";
                 $esId= true;
+                # Bucle que valida cada uno de los campos: 
                 foreach ($_POST as $dato) {
                     if(validarCampo($dato, $esId) == false) {
                         $valido= false;
@@ -47,12 +48,14 @@
                     }
                     $num++;
                 }
+                # Estructura if-else que decide el mensaje mostrado y si se guarda la tarea si todos los campos son validos: 
                 if($valido) {
                     guardarTarea($_POST["id"], $_POST["descripcion"], $_POST["estado"]);
                     echo 'La tarea ha sido guardada.';
                 }
                 else {
                     $num= 0;
+                    # Bucle que crea el mensaje cuando alguno de los campos falla incluyendo los campos fallidos: 
                     foreach($campos as $campo) {
                         $camposFallidosMensaje = $camposFallidosMensaje. $campo;
                         if($num != count($campos) - 1) {

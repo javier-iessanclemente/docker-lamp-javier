@@ -23,7 +23,6 @@
                 </div>
                 <div class="container">
                     <p>Aquí va el contenido </p>
-                    <a href="http://localhost/UD2/entregaTarea/reset.php">Resetear Lista</a>
                 </div>
             </main>
         </div>
