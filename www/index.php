@@ -16,7 +16,8 @@
                         <tr>                            
                             <th>Unidad</th>
                             <th>Boletín</th>
-                            <th>Solución</th>
+                            <th>Solución Profesor</th>
+                            <th>Solución Propia</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,6 +42,13 @@
                                 <a href="UD2/anexos/3.formularios.php" target="_blank">Solución 3. Formularios</a><br />
                                 <a href="#" target="_blank">Solución 4. Funciones</a><br />
                                 <a href="#" target="_blank">Solución 5. Librerías</a><br />    
+                            </td>
+                            <td>
+                                <a href="UD2/soluciones/1.introduccion.php" target="_blank">Solución 1</a>
+                                <a href="UD2/soluciones/2.arrays.php" target="_blank">Solución 2</a>
+                                <a href="UD2/soluciones/3.formularios.php" target="_blank">Solución 3</a>
+                                <a href="UD2/soluciones/4.funciones.php" target="_blank">Solución 4</a>
+                                <a href="UD2/soluciones/5.librerias.php" target="_blank">Solución 5</a>
                             </td>
                         </tr>
                     </tbody>
