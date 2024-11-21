@@ -98,7 +98,7 @@
     <p>
         <?php 
         function esVocal($caracter) {
-            if(strlen($caracter) == 1 && preg_match('/^[aeiouáéíóúÁÉÍÓÚ]+$/i', $caracter)) {
+            if(strlen($caracter) == 1 && preg_match('/[aeiouáéíóú]/ui', $caracter)) {
                 return true;
             }
             return false;
@@ -114,6 +114,61 @@
             }
             $i++;
         }
+        ?>
+    </p>
+    <h3>Paso 5: Función que recibe un número y devuelve si el número es par o impar</h3>
+    <p>
+        <?php
+        function esPar($numero) {
+            if(is_numeric($numero)) {
+                if(fmod($numero, 2) == 0) {
+                    return "Par";
+                }
+                else {
+                    return "Impar";
+                }
+            }
+            else {
+                return "No número";
+            }
+        }
+        $i= 0;
+        $datos= ["10", "1", "-1", "-12", "g", 4.11, 4.42];
+        while($i < count($datos)) {
+            echo 'Resultado para '. $datos[$i] . ' es: '. esPar($datos[$i]). '<br>';
+            $i++;
+        }
+        ?>
+    </p>
+    <h3>Paso 6: Función que recibe un string y devuelve el string en maiúsculas</h3>
+    <p>
+        <?php
+            function convertirMayúsculas($cadena) {
+                return strtoupper($cadena);
+            }
+            $i= 0;
+            $datos= ["10", "gato", "Paco", "HOLA", "Hola, soy Juán"];
+            while($i < count($datos)) {
+                echo 'La cadena en mayúsculas de '. $datos[$i] . ' es: '. convertirMayúsculas($datos[$i]). '<br>';
+                $i++;
+            }
+        ?>
+    </p>
+    <h3>Paso 7: Función que imprime la zona horaria (timezone) por defecto utilizada en PHP</h3>
+    <p>
+    <?php
+        function imprimirZonaHoraria() {
+            $timezone= date_default_timezone_get();
+            echo 'Zona horaria: '. $timezone;
+        }
+        imprimirZonaHoraria();
+    ?>
+    </p>
+    <h3>Paso 8: Función que imprime la hora a la que sale y se pone el sol para la localicación por defecto (Se Debe comprobar como ajustar las coordenadas (latitud y longitud) predeterminadas de tu servidor).</h3>
+    <p>
+        <?php
+            date_sunrise()
+            date_sunset()
         ?>
     </p>
 </body>

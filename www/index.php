@@ -45,6 +45,13 @@
                                 <a href="UD2/anexos/5.librerias" target="_blank">index dividido</a><br />
                                 <a href="UD2/entregaTarea_solucion" target="_blank">Solución Tarea</a><br />
                             </td>
+                            <td>
+                                <a href="UD2/soluciones/1.introduccion.php" target="_blank">Solución 1</a>
+                                <a href="UD2/soluciones/2.arrays.php" target="_blank">Solución 2</a>
+                                <a href="UD2/soluciones/3.formularios.php" target="_blank">Solución 3</a>
+                                <a href="UD2/soluciones/4.funciones.php" target="_blank">Solución 4</a>
+                                <a href="UD2/soluciones/5.librerias.php" target="_blank">Solución 5</a>
+                            </td>
                         </tr>
                         <tr>
                             <td><a href="https://manuais.pages.iessanclemente.net/plantillas/daw/dwcs-d/ud03/index.html" target="_blank">Unidad 3</a></td>
@@ -61,11 +68,11 @@
                                 <a href="UD3/entregaTarea_solucion" target="_blank">Solución Tarea</a><br />
                             </td>
                             <td>
-                                <a href="UD2/soluciones/1.introduccion.php" target="_blank">Solución 1</a>
-                                <a href="UD2/soluciones/2.arrays.php" target="_blank">Solución 2</a>
-                                <a href="UD2/soluciones/3.formularios.php" target="_blank">Solución 3</a>
-                                <a href="UD2/soluciones/4.funciones.php" target="_blank">Solución 4</a>
-                                <a href="UD2/soluciones/5.librerias.php" target="_blank">Solución 5</a>
+                                <a href="UD3/soluciones/1.tienda/index.php" target="_blank">Solución 1</a>
+                                <a href="UD3/soluciones/2.donacion/index.php" target="_blank">Solución 2</a>
+                                <a href="#" target="_blank">Solución 3</a>
+                                <a href="#" target="_blank">Solución 4</a>
+                                <a href="#" target="_blank">Solución 5</a>
                             </td>
                         </tr>
                     </tbody>
