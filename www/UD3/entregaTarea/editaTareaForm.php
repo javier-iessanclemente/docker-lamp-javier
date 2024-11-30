@@ -27,7 +27,6 @@
                             $id= $_GET["id"];
                             require_once("mysqli.php");
                             $resultado= obtenerTarea($id);
-                            $estados= obtenerValoresEstado();
                             if(is_array($resultado)) {
                                 foreach($resultado as $tarea) {
                                     echo '<div class="mb-3">';
@@ -50,9 +49,19 @@
                                     echo '<label for="username" class="form-label">Usuario asociado a la tarea</label>';
                                     echo '<select name="username" class="form-select" id="username" name="username" placeholder="Nombre del usuario asociado" required>';
                                     
-                                    $nombres= obtenerNombresUsuario();
-                                
-                                    $username= obtenerNombreUsuario($tarea['id_usuario']);
+                                    if(!is_string(obtenerNombresUsuario(null))) {
+                                        $nombres= obtenerNombresUsuario(null);
+                                    }
+                                    else {
+                                        $nombres= [];
+                                    }
+
+                                    if(!is_string(obtenerNombresUsuario($tarea['id_usuario']))) {
+                                        $username= obtenerNombresUsuario($tarea['id_usuario']);
+                                    }
+                                    else {
+                                        $username= '';
+                                    }
                                     
                                     // Bucle que crea las opciones para los diferentes usuarios: 
                                     foreach($nombres as $nombre) {
@@ -69,8 +78,25 @@
                                     echo '<button type="submit" class="btn btn-primary">Actualizar tarea</button>';
                                 }
                             }
+                            if(is_string($resultado)) {
+                                echo '<div class="alert alert-danger" role="alert">';
+                                echo 'Fallo en el obtención de la información de la tarea: ' . $resultado;
+                                echo '</div>';
+                            }
                         ?>
                     </form>
+                    <?php 
+                        if(is_string(obtenerNombresUsuario(null))) {
+                            echo '<div class="alert alert-danger" role="alert">';
+                            echo 'Fallo en la obtención de los usuarios del formulario: ' . obtenerNombresUsuario(null);
+                            echo '</div>';
+                        }
+                        if(is_string(obtenerNombresUsuario(null))) {
+                            echo '<div class="alert alert-danger" role="alert">';
+                            echo 'Fallo en el obtención del usuario de la tarea: ' . obtenerNombresUsuario(null);
+                            echo '</div>';
+                        }
+                    ?>
                 </div>
             </main>
         </div>

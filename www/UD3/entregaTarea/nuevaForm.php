@@ -43,8 +43,12 @@
                             <select name="username" class="form-select" id="username" name="username" placeholder="Nombre del usuario asociado" required>
                                 <?php 
                                     require_once("mysqli.php");
-                                    $nombres= obtenerNombresUsuario();
-                                    
+                                    if(!is_string(obtenerNombresUsuario(null))) {
+                                        $nombres= obtenerNombresUsuario(null);
+                                    }
+                                    else {
+                                        $nombres= [];
+                                    }
                                     // Bucle que crea las opciones para los diferentes usuarios: 
                                     foreach($nombres as $nombre) {
                                         echo '<option value="' . $nombre['username'] . '">' . $nombre['username'] . '</option>';
@@ -54,6 +58,13 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </form>
+                    <?php 
+                        if(is_string(obtenerNombresUsuario(null))) {
+                            echo '<div class="alert alert-danger" role="alert">';
+                            echo 'Fallo en la obtención de los usuarios del formulario: ' . obtenerNombresUsuario(null);
+                            echo '</div>';
+                        }
+                    ?>
                 </div>
             </main>
         </div>

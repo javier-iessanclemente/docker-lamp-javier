@@ -81,8 +81,12 @@
                                         } elseif ($fila["estado"] == 'completada') {
                                             echo '<td>Completada</td>';
                                         }
-    
-                                        echo '<td>' . obtenerNombreUsuario($fila["id_usuario"])[0]['username'] .'</td>';
+                                        if(!is_string(obtenerNombresUsuario($fila["id_usuario"]))) {
+                                            echo '<td>' . obtenerNombresUsuario($fila["id_usuario"])[0]['username'] .'</td>';
+                                        }
+                                        else {
+                                            $mensaje= obtenerNombresUsuario($fila["id_usuario"]);
+                                        }
                                         echo '<td><a href="editaTareaForm.php?id=' . $fila["id"] .'" role="button" class="btn btn-outline-success m-1" onclick=()>Editar</a><a href="borraTarea.php?id=' . $fila["id"] . '" role="button" class="btn btn-outline-danger m-1">Borrar</a></td>';
                                         echo '</tr>';
                                     }
@@ -94,6 +98,9 @@
                             // If que comprueba si se ha devuleto un error (el mensaje es un string): 
                             if(is_string($resultados)) {
                                 echo '<div role="alert" class="alert alert-danger">Fallo en la muestra de las tareas: ' . $resultados . '</div>';
+                            }
+                            if(isset($mensaje)) {
+                                echo '<div role="alert" class="alert alert-danger">Fallo en la obtención del usuario de las tareas: ' . $mensaje . '</div>';
                             }
                         ?>
                     </div>

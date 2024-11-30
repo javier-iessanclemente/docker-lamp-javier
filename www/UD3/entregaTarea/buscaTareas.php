@@ -28,11 +28,20 @@
                                 <option disabled value="" selected>Seleccione el usuario</option>
                                 <?php      
                                     require_once("pdo.php");
-                                    $nombres= obtenerNombresUsuarioPDO();
-
+                                    if(!is_string(obtenerNombresUsuarioPDO())) {
+                                        $nombres= obtenerNombresUsuarioPDO();
+                                    }
+                                    else {
+                                        $nombres= [];
+                                    }
                                     // Bucle que crea las opciones para los diferentes usuarios: 
                                     foreach($nombres as $nombre) {
-                                        echo '<option value="' . obtenerIdUsuarioPDO($nombre['username'])['id']. '">' . $nombre['username'] . '</option>';
+                                        if(!is_string(obtenerIdUsuarioPDO($nombre['username']))) {
+                                            echo '<option value="' . obtenerIdUsuarioPDO($nombre['username'])['id']. '">' . $nombre['username'] . '</option>';
+                                        }
+                                        else {
+                                            $mensaje= obtenerIdUsuarioPDO($nombre['username']);
+                                        }
                                     }
                                 ?>
                             </select>
@@ -48,6 +57,18 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Buscar</button>
                     </form>
+                    <?php 
+                        if(is_string(obtenerNombresUsuarioPDO())) {
+                            echo '<div class="alert alert-danger" role="alert">';
+                            echo 'Fallo en la obtención de los usuarios del formulario: ' . obtenerNombresUsuarioPDO();
+                            echo '</div>';
+                        }
+                        if(isset($mensaje)) {
+                            echo '<div class="alert alert-danger" role="alert">';
+                            echo 'Fallo en la obtención de los usuarios del formulario: ' . $mensaje;
+                            echo '</div>';
+                        }
+                    ?>
                 </div>
             </main>
         </div>

@@ -12,69 +12,80 @@
 
     function obtenerIdUsuario($nombre_usuario) {
         $conexion= conectar();
-        $consulta= 'SELECT id FROM usuarios WHERE username="' . $nombre_usuario . '";';
-        $resultado= $conexion->query($consulta);
-        if($resultado->num_rows == 1) {
-            desconectar($conexion);
-            return $resultado->fetch_assoc()["id"];
+        if(!is_string($conexion)) {
+            $consulta= 'SELECT id FROM usuarios WHERE username="' . $nombre_usuario . '";';
+            $resultado= $conexion->query($consulta);
+            if($resultado) {
+                if($resultado->num_rows >= 1) {
+                    desconectar($conexion);
+                    return intval($resultado->fetch_assoc()["id"]);
+                }
+            }
+            else {
+                $error= $conexion->error;
+                desconectar($conexion);
+                return $error;
+            }
         }
-
+        else {
+            return $conexion;
+        }
     }
 
-    function obtenerNombresUsuario() {
+    function obtenerNombresUsuario($id) {
         $nombres= [];
         $conexion= conectar();
-        $consulta= 'SELECT username FROM usuarios;';
-        $resultados= $conexion->query($consulta);
-        desconectar($conexion);
-        if($resultados->num_rows >= 1) {
-            while($resultado= $resultados->fetch_assoc()) {
-                array_push($nombres, $resultado);
+        if(!is_string($conexion)) {
+            if(!is_null($id)) {
+                $consulta= 'SELECT username FROM usuarios WHERE id=' . $id . ';';
             }
-            return $nombres;
-        }
-
-    }
-
-    function obtenerNombreUsuario($id) {
-        $nombres= [];
-        $conexion= conectar();
-        $consulta= 'SELECT username FROM usuarios WHERE id=' . $id . ';';
-        $resultados= $conexion->query($consulta);
-        desconectar($conexion);
-        if($resultados->num_rows == 1) {
-            while($resultado= $resultados->fetch_assoc()) {
-                array_push($nombres, $resultado);
+            else {
+                $consulta= 'SELECT username FROM usuarios;';
             }
-            return $nombres;
+            $resultados= $conexion->query($consulta);
+            if($resultados) {
+                desconectar($conexion);
+                if($resultados->num_rows >= 1) {
+                    while($resultado= $resultados->fetch_assoc()) {
+                        array_push($nombres, $resultado);
+                    }
+                    return $nombres;
+                }
+            }
+            else {
+                $error= $conexion->error;
+                desconectar($conexion);
+                return $error;
+            }
+        }
+        else {
+            return $conexion;
         }
 
-    }
-
-    function obtenerValoresEstado() {
-        $conexion= conectar();
-        $consulta = 'SHOW COLUMNS FROM tareas LIKE "estado"';
-        $result = $conexion->query($consulta); 
-        if ($result->num_rows > 0) { 
-            $row = $result->fetch_assoc(); 
-            $estados = $row['Type'];
-            $estados = str_replace("enum('", "", $estados);
-            $estados = str_replace("')", "", $estados);
-            $estados = explode("','", $estados);
-            return $estados;
-        }
     }
 
     function mostrarTareas() {
         $conexion= conectar();
-        $consulta= "SELECT id, titulo, descripcion, estado, id_usuario FROM tareas";
-        $resultados= $conexion->query($consulta);
-        $resultado= [];
-        foreach($resultados as $fila) {
-            array_push($resultado, $fila);
+        if(!is_string($conexion)) {
+            $consulta= "SELECT id, titulo, descripcion, estado, id_usuario FROM tareas";
+            $resultados= $conexion->query($consulta);
+            if($resultados) {
+                $resultado= [];
+                foreach($resultados as $fila) {
+                    array_push($resultado, $fila);
+                }
+                desconectar($conexion);
+                return $resultado;
+            }
+            else {
+                $error= $conexion->error;
+                desconectar($conexion);
+                return $error;
+            }
         }
-        desconectar($conexion);
-        return $resultado;
+        else {
+            return $conexion;
+        }
         
     }
 
@@ -127,16 +138,27 @@
         $validacion= validarCamposTareas($titulo, $descripcion, $estado, $nombre_usuario);
         if($validacion[0]) {
             $nombre_usuario= filtrarCampoTarea($nombre_usuario);
-            $id_usuario= obtenerIdUsuario($nombre_usuario);
+            if(is_string(obtenerIdUsuario($nombre_usuario))) {
+                return obtenerIdUsuario($nombre_usuario);
+            }
+            else {
+                $id_usuario= obtenerIdUsuario($nombre_usuario);
+            }
             $titulo= filtrarCampoTarea($titulo);
             $descripcion= filtrarCampoTarea($descripcion);
             $estado= filtrarCampoTarea($estado);
             $conexion= conectar();
             if(!is_string($conexion)) {
-                $registro= $conexion->prepare("INSERT INTO tareas(titulo, descripcion, estado, id_usuario) VALUES (?,?,?,?);");
-                $registro->bind_param("sssi", $titulo, $descripcion, $estado, $id_usuario);
-                $registro->execute();
-                $registro->close();
+                if(($registro= $conexion->prepare("INSERT INTO tareas(titulo, descripcion, estado, id_usuario) VALUES (?,?,?,?);"))) {
+                    $registro->bind_param("sssi", $titulo, $descripcion, $estado, $id_usuario);
+                    $registro->execute();
+                    $registro->close();
+                }
+                else {
+                    $error= $conexion->error;
+                    desconectar($conexion);
+                    return $error;
+                }
                 desconectar($conexion);
             }
             else {
@@ -151,12 +173,20 @@
     function borrarTarea($id) {
         $conexion= conectar();
         $operacion_borrado= 'DELETE FROM tareas WHERE id=' . $id . ';';
-        $borrado= $conexion->query($operacion_borrado);
-        if($borrado) {
-            return true;
+        if(!is_string($conexion)) {
+            $borrado= $conexion->query($operacion_borrado);
+            if($borrado) {
+                desconectar($conexion);
+                return true;
+            }
+            else {
+                $error= $conexion->error;
+                desconectar($conexion);
+                return $error;
+            }
         }
         else {
-            return $conexion->error;
+            return $conexion;
         }
     }
 
@@ -164,8 +194,24 @@
         $validacion= validarCamposTareas($titulo, $descripcion, $estado , $username);
         if($validacion[0]) {
             $conexion= conectar();
-            $operacion_edicion= 'UPDATE tareas SET titulo="' . filtrarCampoTarea($titulo) . '", descripcion="' . filtrarCampoTarea($descripcion) . '", estado="' . filtrarCampoTarea($estado) . '", id_usuario="' . filtrarCampoTarea(obtenerIdUsuario($username)) . '" WHERE id=' . $id . ';';
-            $edicion= $conexion->query($operacion_edicion);
+            if(!is_string($conexion)) {
+                if(is_string(obtenerIdUsuario($username))) {
+                    return obtenerIdUsuario($username);
+                }
+                else {
+                    $id_usuario= obtenerIdUsuario($username);
+                }
+                $operacion_edicion= 'UPDATE tareas SET titulo="' . filtrarCampoTarea($titulo) . '", descripcion="' . filtrarCampoTarea($descripcion) . '", estado="' . filtrarCampoTarea($estado) . '", id_usuario="' . $id_usuario . '" WHERE id=' . $id . ';';
+                $edicion= $conexion->query($operacion_edicion);
+                if(!$edicion) {
+                    $error= $conexion->error;
+                    desconectar($conexion);
+                    return $error;
+                }
+            }
+            else {
+                return $conexion;
+            }
         }
         else {
             return $validacion[1];
