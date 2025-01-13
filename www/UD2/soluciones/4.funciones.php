@@ -167,8 +167,13 @@
     <h3>Paso 8: Función que imprime la hora a la que sale y se pone el sol para la localicación por defecto (Se Debe comprobar como ajustar las coordenadas (latitud y longitud) predeterminadas de tu servidor).</h3>
     <p>
         <?php
-            date_sunrise()
-            date_sunset()
+            echo '<p>'. ini_get("date.default_latitude"). '</p>';
+            ini_set("date.default_latitude", '42.554');
+            ini_set("date.default_longitude", '28.99225');
+            echo '<p>Fecha amanecer: ' . date_sunrise(time()) . '</p>';
+            ini_set("date.default_latitude", '42.554');
+            ini_set("date.default_longitude", '28.99225');
+            echo '<p>Fecha atardecer: ' . date_sunset(time()) . '</p>';
         ?>
     </p>
 </body>
