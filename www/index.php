@@ -92,6 +92,13 @@
                                 <a href="UD4/anexos/3.cookies" target="_blank">Solución boletín 3</a><br />
                                 <a href="UD4/anexos/3.cookies" target="_blank">Solución boletín 4</a><br />
                             </td>
+                            <td>
+                                <a href="UD4" target="_blank">Ejemplos unidad</a><br />
+                                <a href="UD4/soluciones/1.sesiones" target="_blank">Solución boletín 1</a><br />
+                                <a href="UD4/soluciones/2.sesiones_BD" target="_blank">Solución boletín 2</a><br />
+                                <a href="UD4/soluciones/3.cookies" target="_blank">Solución boletín 3</a><br />
+                                <a href="UD4/soluciones/4.ficheros" target="_blank">Solución boletín 4</a><br />
+                            </td>
                         </tr> 
                     </tbody>
                 </table>
