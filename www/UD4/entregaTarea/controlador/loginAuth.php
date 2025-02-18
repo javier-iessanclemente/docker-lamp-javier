@@ -30,8 +30,8 @@
         if($nombre== "admintest" && $contrasena== "abc123..") {
             $_SESSION["usuario"]= ["username"=> $nombre, "rol"=> 1, "id"=> 0];
             header("Location: ../index.php");
-        }*/
-        else {
+        }
+        else {*/
         
         require_once('../modelo/pdo.php');
         $resultado = ValidaUsuario(filtraCampo($nombre), filtraCampo($contrasena));

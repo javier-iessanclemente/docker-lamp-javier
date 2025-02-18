@@ -114,7 +114,9 @@ function actualizaUsuario($id, $nombre, $apellidos, $username, $contrasena, $rol
         $stmt->bindParam(':apellidos', $apellidos);
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':rol', $rol);
-        $hash= password_hash($contrasena, PASSWORD_DEFAULT);
+        if(isset($contrasena)) {
+            $hash= password_hash($contrasena, PASSWORD_DEFAULT);
+        }
         if (isset($contrasena)) $stmt->bindParam(':contrasena', $hash);
         $stmt->bindParam(':id', $id);
 
