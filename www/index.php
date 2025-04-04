@@ -144,6 +144,13 @@
                                 <a href="UD5/soluciones/10.excepciones.php" target="_blank">Solución boletín 10</a><br />
                             </td>
                         </tr>
+                        <tr>
+                            <td><a href="https://manuais.pages.iessanclemente.net/plantillas/daw/dwcs-d/ud06/index.html" target="_blank">Unidad 6</a></td>
+                            <td><a href="https://manuais.pages.iessanclemente.net/plantillas/daw/dwcs-d/ud06/4.anexos/1.flight/index.html"></a></td>
+                            <td>
+                                <a href="UD6/soluciones/1.flight/index.php" target="_blank">Solución boletín 1</a><br/>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
