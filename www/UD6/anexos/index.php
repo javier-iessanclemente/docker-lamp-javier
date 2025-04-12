@@ -243,6 +243,7 @@ Flight::route('PUT /reservas', function() {
 });
 
 Flight::route('/', function () {
+    var_dump($_ENV);
     echo 'API HOTELES';
 });
 

@@ -134,35 +134,13 @@
                         </tr>
                         <tr>
                             <td><a href="https://manuais.pages.iessanclemente.net/plantillas/daw/dwcs-d/ud06/index.html" target="_blank">Unidad 6</a></td>
+                            <td><a href="https://manuais.pages.iessanclemente.net/plantillas/daw/dwcs-d/ud06/4.anexos/1.flight/index.html">Boletin 1. Flight</a></td>
+                            <a href="https://manuais.pages.iessanclemente.net/plantillas/daw/dwcs-d/ud02/5.tarea_ud06/index.html">Tarea</a>
                             <td>
-                                <br />
-                                <a href="https://manuais.pages.iessanclemente.net/plantillas/daw/dwcs-d/ud06/4.anexos/1.flight/index.html" target="_blank">Boletín 1. Flight</a><br />
-                                <!--a href="https://manuais.pages.iessanclemente.net/plantillas/daw/dwcs-d/ud05/5.tarea_ud05/index.html">Tarea</a-->
+                                <a href="UD6/anexos/" target="_blank">Solución boletín 1</a><br/>
                             </td>
                             <td>
-                                <a href="UD6" target="_blank">Ejemplos unidad</a><br />
-                                <a href="UD6/anexos/1.flight.php" target="_blank">Solución boletín 1</a><br />
-                                
-                                <!--a href="UD6/entregaTarea_solucion" target="_blank">Solución Tarea</a><br /-->
-                            </td>
-                            <td>
-                                <a href="UD5/soluciones/1.clases.php" target="_blank">Solución boletín 1</a><br />
-                                <a href="UD5/soluciones/2.tienda" target="_blank">Solución boletín 2</a><br />
-                                <a href="UD5/soluciones/3.herencia.php" target="_blank">Solución boletín 3</a><br />
-                                <a href="UD5/soluciones/4.prop_estaticas.php" target="_blank">Solución boletín 4</a><br />
-                                <a href="UD5/soluciones/5.estatica.php" target="_blank">Solución boletín 5</a><br />
-                                <a href="UD5/soluciones/6.abstracta.php" target="_blank">Solución boletín 6</a><br />
-                                <a href="UD5/soluciones/7.anonima.php" target="_blank">Solución boletín 7</a><br />
-                                <a href="UD5/soluciones/8.interface.php" target="_blank">Solución boletín 8</a><br />
-                                <a href="UD5/soluciones/9.traits.php" target="_blank">Solución boletín 9</a><br />
-                                <a href="UD5/soluciones/10.excepciones.php" target="_blank">Solución boletín 10</a><br />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://manuais.pages.iessanclemente.net/plantillas/daw/dwcs-d/ud06/index.html" target="_blank">Unidad 6</a></td>
-                            <td><a href="https://manuais.pages.iessanclemente.net/plantillas/daw/dwcs-d/ud06/4.anexos/1.flight/index.html"></a></td>
-                            <td>
-                                <a href="UD6/soluciones/1.flight/index.php" target="_blank">Solución boletín 1</a><br/>
+                                <a href="UD6/soluciones/1.flight/" target="_blank">Solución boletín 1</a><br/>
                             </td>
                         </tr>
                     </tbody>
