@@ -143,6 +143,17 @@
                                 <a href="UD6/soluciones/1.flight/" target="_blank">Solución boletín 1</a><br/>
                             </td>
                         </tr>
+                        <tr>
+                            <td><a href="https://manuais.pages.iessanclemente.net/plantillas/daw/dwcs-d/ud06/index.html" target="_blank">Unidad 7</a></td>
+                            <td><a href="https://manuais.pages.iessanclemente.net/plantillas/daw/dwcs-d/ud06/4.anexos/1.flight/index.html">Boletin 1. Flight</a></td>
+                            <a href="https://manuais.pages.iessanclemente.net/plantillas/daw/dwcs-d/ud02/5.tarea_ud06/index.html">Tarea</a>
+                            <td>
+                                <a href="UD6/anexos/" target="_blank">Solución boletín 1</a><br/>
+                            </td>
+                            <td>
+                                <a href="UD6/soluciones/1.flight/" target="_blank">Solución boletín 1</a><br/>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
